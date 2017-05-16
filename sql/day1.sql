@@ -4,20 +4,19 @@ CREATE DATABASE db_1702;
 
 DROP DATABASE db_1702;
 
-USE db_1702;
-
 SHOW TABLES ;
 
-CREATE TABLE student (
+CREATE TABLE db_1702.student (
   id  VARCHAR(255),
   name VARCHAR(255),
   gender CHAR(1),
-  age  INT(2)
+  age  INT(2),
+  intro TEXT
 );
 
 SELECT *
-FROM student;
+FROM db_1702.student;
 
-INSERT INTO student
-    VALUES ('2017001','张三','男',20);
+INSERT INTO db_1702.student
+    VALUES ('2017001','张三','男',20,'');
 
