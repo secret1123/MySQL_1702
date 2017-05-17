@@ -26,8 +26,8 @@ CREATE TABLE db_1702.course (
 )
   COMMENT '课程表';
 
-DROP TABLE IF EXISTS db_1702.choose;
-CREATE TABLE db_1702.choose (
+DROP TABLE IF EXISTS db_1702.student_course;
+CREATE TABLE db_1702.student_course (
   id       INT AUTO_INCREMENT PRIMARY KEY
   COMMENT 'PK',
   name     VARCHAR(255) COMMENT '选课名',
@@ -36,19 +36,21 @@ CREATE TABLE db_1702.choose (
 )
   COMMENT '选课表';
 
-INSERT INTO db_1702.student VALUES (NULL, 'Tom', 'intro', 'M', 21, 1.8, 123.654, '1999-1-1', '2017-1-1 11:11:11'
-);
-INSERT INTO db_1702.course VALUES (NULL ,'english','2017-6-1 9:10:10',1);
-INSERT INTO db_1702.choose VALUES (NULL ,'java','2017-9-9 14:00:00',2);
+INSERT INTO db_1702.student VALUES (NULL, 'Tom', 'intro', 'M', 21, 1.8, 123.654, '1999-1-1', '2017-1-1 11:11:11');
+INSERT INTO db_1702.student VALUES (NULL, 'jerry', 'intro', 'M', 21, 1.8, 123.654, '1999-1-1', '2017-1-1 11:11:11');
+
+SELECT *
+FROM db_1702.student;
+
+INSERT INTO db_1702.course VALUES (NULL ,'java','2017-9-9 14:00:00',2);
+INSERT INTO db_1702.course VALUES (NULL ,'mysql','2017-9-9 14:00:00',2);
 
 SELECT *
 FROM db_1702.course;
 
 SELECT *
-FROM db_1702.choose;
+FROM db_1702.student_course;
 
-SELECT *
-FROM db_1702.student;
 
-# SHOW FULL COLUMNS FROM db_1702.student;
+SHOW FULL COLUMNS FROM db_1702.student;
 # TRUNCATE TABLE db_1702.student;
