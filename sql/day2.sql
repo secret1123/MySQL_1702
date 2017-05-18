@@ -21,8 +21,7 @@ CREATE TABLE db_1702.course (
   id       INT AUTO_INCREMENT PRIMARY KEY
   COMMENT 'PK',
   name     VARCHAR(255) COMMENT '课程名',
-  time     DATETIME COMMENT '课时',
-  courseId INT COMMENT 'FK'
+  time     DATETIME COMMENT '课时'
 )
   COMMENT '课程表';
 
@@ -31,8 +30,7 @@ CREATE TABLE db_1702.student_course (
   id       INT AUTO_INCREMENT PRIMARY KEY
   COMMENT 'PK',
   name     VARCHAR(255) COMMENT '选课名',
-  time     DATETIME COMMENT '选课时间',
-  chooseId INT COMMENT 'FK'
+  time     DATETIME COMMENT '选课时间'
 )
   COMMENT '选课表';
 
@@ -42,8 +40,8 @@ INSERT INTO db_1702.student VALUES (NULL, 'jerry', 'intro', 'M', 21, 1.8, 123.65
 SELECT *
 FROM db_1702.student;
 
-INSERT INTO db_1702.course VALUES (NULL ,'java','2017-9-9 14:00:00',2);
-INSERT INTO db_1702.course VALUES (NULL ,'mysql','2017-9-9 14:00:00',2);
+INSERT INTO db_1702.course VALUES (NULL ,'java','2017-9-9 14:00:00');
+INSERT INTO db_1702.course VALUES (NULL ,'mysql','2017-9-9 14:00:00');
 
 SELECT *
 FROM db_1702.course;

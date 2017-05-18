@@ -18,7 +18,7 @@ FROM db_1702.student_course;
 TRUNCATE TABLE db_1702.student_course;
 
 DELETE FROM db_1702.course
-WHERE id > 2;
+WHERE id >2;
 
 DROP TABLE IF EXISTS db_1702.student_course;
 CREATE TABLE db_1702.student_course (
@@ -34,7 +34,8 @@ ALTER TABLE db_1702.student_course
     ADD CONSTRAINT
 fk_student_course_studentId
 FOREIGN KEY (studentId)
-  REFERENCES db_1702.student(id);
+  REFERENCES db_1702.student(id)
+  ON DELETE SET NULL;
 
 ALTER TABLE db_1702.student_course
     ADD CONSTRAINT
@@ -52,3 +53,4 @@ INSERT INTO db_1702.student_course
 
 SELECT *
 FROM student_course;
+
