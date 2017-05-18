@@ -22,3 +22,14 @@ WHERE id = 5;
 
 DELETE FROM db_1702.student
 WHERE age BETWEEN 19 AND 21;
+
+SELECT *
+FROM scott.dept;
+
+SELECT *
+FROM scott.emp;
+
+SELECT
+   DISTINCT JOB
+FROM scott.emp;
+
