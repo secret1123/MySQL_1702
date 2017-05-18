@@ -19,3 +19,6 @@ WHERE id = 4;
 UPDATE db_1702.student
     SET intro = 'Pisces',gender = '女'
 WHERE id = 5;
+
+DELETE FROM db_1702.student
+WHERE age BETWEEN 19 AND 21;
