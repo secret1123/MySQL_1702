@@ -33,3 +33,6 @@ SELECT
    DISTINCT JOB
 FROM scott.emp;
 
+
+
+
