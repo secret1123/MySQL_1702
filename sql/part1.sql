@@ -26,7 +26,7 @@ WHERE DEPTNO = 10 AND JOB = 'manager' OR DEPTNO = 20 AND JOB = 'clerk';
 SELECT *
 FROM scott.emp
 WHERE ((DEPTNO = 10 AND JOB = 'manager') OR (DEPTNO = 20 AND JOB = 'clerk')) OR
-      ((JOB != 'manager' AND JOB != 'clerk') AND (SAL > 2000));
+      ((JOB != 'manager' AND JOB != 'clerk') AND (SAL +ifnull(COMM,0)));
 # 7. 找出获得奖金的员工的工作
 SELECT *
 FROM scott.emp
@@ -48,7 +48,9 @@ WHERE date_add(HIREDATE, INTERVAL 35 YEAR) < current_date;
 # 12. 找到名字长度为 4 个字符的员工信息
 
 # 13. 名字中不包含 R 字符的员工信息
-
+SELECT *
+FROM emp
+WHERE ENAME NOT LIKE '%r%';
 # 14. 找出员工名字的前3个字符
 
 # 15. 将名字中 A 改为 a
