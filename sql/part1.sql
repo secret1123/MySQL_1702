@@ -26,7 +26,7 @@ WHERE DEPTNO = 10 AND JOB = 'manager' OR DEPTNO = 20 AND JOB = 'clerk';
 SELECT *
 FROM scott.emp
 WHERE ((DEPTNO = 10 AND JOB = 'manager') OR (DEPTNO = 20 AND JOB = 'clerk')) OR
-      ((JOB != 'manager' AND JOB != 'clerk') AND (SAL +ifnull(COMM,0)));
+      ((JOB != 'manager' AND JOB != 'clerk') AND (SAL +ifnull(COMM,0)>2000));
 # 7. 找出获得奖金的员工的工作
 SELECT *
 FROM scott.emp
@@ -74,9 +74,13 @@ ORDER BY JOB DESC , SAL+ifnull(COMM,0) ;
 # 21. 计算员工的日薪，每月按 30 天
 
 # 22. 找出 2 月份雇佣的员工
-
+SELECT *
+FROM emp
+WHERE HIREDATE RLIKE '02-';
 # 23. 至今为止，员工被雇佣的天数
 
 # 24. 找出姓名中包含 A 的员工信息
-
+SELECT *
+FROM emp
+WHERE ENAME REGEXP 'A';
 # 25. 计算出员工被雇佣了多少年、多少月、多少日
