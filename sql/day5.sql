@@ -49,4 +49,3 @@ SELECT
   ENAME,
   SAL + ifnull(COMM,0)
 FROM scott.emp;
-
