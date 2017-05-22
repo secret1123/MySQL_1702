@@ -4,6 +4,11 @@ FROM scott.emp;
 SELECT *
 FROM scott.dept;
 
+SELECT *
+FROM scott.salgrade;
+
+SHOW TABLE STATUS FROM scott;
+
 SELECT
   DISTINCT
   d.DNAME,
