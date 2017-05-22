@@ -44,19 +44,29 @@ SELECT *
 FROM emp
 WHERE date_add(HIREDATE, INTERVAL 35 YEAR) < current_date;
 # 11. 找出姓名以 A、B、S 开始的员工信息
-
+SELECT *
+FROM scott.emp
+WHERE ENAME REGEXP '^[abs]';
 # 12. 找到名字长度为 4 个字符的员工信息
-
+SELECT *
+FROM scott.emp
+WHERE length(ENAME) = 4;
 # 13. 名字中不包含 R 字符的员工信息
 SELECT *
 FROM emp
 WHERE ENAME NOT LIKE '%r%';
 # 14. 找出员工名字的前3个字符
-
+SELECT
+substr(ENAME,1,3)
+FROM scott.emp;
 # 15. 将名字中 A 改为 a
-
+SELECT
+  replace(ENAME,'A','a')
+FROM scott.emp;
 # 16. 将员工的雇佣日期拖后 10 年
-
+SELECT
+  date_add(HIREDATE,INTERVAL 10 YEAR)
+FROM scott.emp;
 # 17. 返回员工的详细信息并按姓名排序
 SELECT *
 FROM emp
@@ -70,9 +80,17 @@ SELECT *
 FROM emp
 ORDER BY JOB DESC , SAL+ifnull(COMM,0) ;
 # 20. 返回员工的姓名、雇佣年份和月份，并按月份和雇佣日期排序
-
+SELECT
+  ENAME,
+  year(HIREDATE),
+  month(HIREDATE)
+FROM scott.emp
+ORDER BY 3,day(HIREDATE);
 # 21. 计算员工的日薪，每月按 30 天
-
+SELECT
+  ENAME,
+  SAL+ifnull(COMM,0)/30
+FROM scott.emp;
 # 22. 找出 2 月份雇佣的员工
 SELECT *
 FROM emp
