@@ -9,7 +9,11 @@ FROM scott.emp e
 # 2. 工资多于 scott 的员工信息
 SELECT *
 FROM scott.emp
-WHERE SAL + ifnull(COMM, 0) > 3000;
+WHERE SAL + ifnull(COMM, 0) >(
+  SELECT SAL+ifnull(COMM,0)
+  FROM scott.emp
+WHERE ENAME = 'scott'
+);
 # 3. 返回员工和所属经理的姓名
 SELECT
   e1.ENAME,
@@ -74,10 +78,10 @@ SELECT
   e.SAL + ifnull(COMM, 0)
 FROM scott.emp e INNER JOIN scott.dept d
     ON e.DEPTNO = d.DEPTNO;
-# 15. 返回雇员表中不在同一 部门但是从事相同工作的员工信息
+# 15. 返回雇员表中不在同一部门但是从事相同工作的员工信息
 SELECT
-  DISTINCT *
-# e1.*
+  DISTINCT
+e1.*
 #   e2.*
 FROM scott.emp e1 INNER JOIN scott.emp e2
     ON e1.DEPTNO <> e2.DEPTNO AND e1.JOB = e2.JOB;
