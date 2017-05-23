@@ -63,9 +63,9 @@ fk_student_departmentId
 FOREIGN KEY (departmentId)
   REFERENCES db_exam.department(id);
 
-ALTER TABLE db_exam.student_course
+ALTER TABLE db_exam.course
     ADD CONSTRAINT
-fk_student_course_studentId
+fk_course_studentId
 FOREIGN KEY (studentId)
   REFERENCES db_exam.student(id);
 
@@ -73,7 +73,8 @@ ALTER TABLE db_exam.student_course
     ADD CONSTRAINT
 fk_student_course_courseId
 FOREIGN KEY (courseId)
-  REFERENCES db_exam.student(id);
+  REFERENCES db_exam.course(id);
+
 
 SELECT *
   FROM db_exam.student;
@@ -131,14 +132,14 @@ SELECT
   DISTINCT
   s.name,
   c.courseId
-FROM student s INNER JOIN department d INNER JOIN student_course c
-ON s.id = c.studentId;
+FROM db_exam.student s INNER JOIN db_exam.course c INNER JOIN db_exam.student_course sc
+ON s.id = c.studentId AND s.id = sc.courseId;
 
 SELECT
   DISTINCT
   e.courseId,
   s.name
-FROM student s INNER JOIN course c INNER JOIN student_course e
+FROM db_exam.student s INNER JOIN db_exam.course c INNER JOIN db_exam.student_course e
 ON s.id = e.studentId;
 
 
