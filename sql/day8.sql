@@ -72,6 +72,8 @@ UPDATE scott.v_union
 SET scott.v_union.ENAME = 'SCOTT'
 WHERE scott.v_union.ENAME = 'scott';
 
+
+-- 子查询
 SELECT *
 FROM scott.emp
 WHERE SAL > (
@@ -90,8 +92,55 @@ WHERE SAL > (
   WHERE e.DEPTNO = e.DEPTNO
 );
 
+-- 开启一次事务
 START TRANSACTION ;
 SELECT *
 FROM scott.emp;
 DELETE FROM scott.emp;
 ROLLBACK ;
+
+START TRANSACTION;
+
+UPDATE scott.emp
+    SET SAL = SAL - 1000
+WHERE ENAME = 'allen';
+
+UPDATE scott.emp
+    SET SAL = SAL + 1000
+WHERE ENAME = 'ward';
+
+COMMIT;
+
+ROLLBACK;
+
+SELECT *
+FROM scott.emp;
+
+
+-- save point  保留点
+START TRANSACTION ;
+
+UPDATE scott.emp
+    SET ENAME = 'ALLEN'
+WHERE EMPNO = 7499;
+
+SAVEPOINT a;
+
+DELETE FROM scott.emp
+WHERE EMPNO = 7499;
+
+SAVEPOINT b;
+
+INSERT INTO scott.emp(EMPNO,ENAME)
+    VALUES (123,'Tom');
+
+SAVEPOINT c;
+
+DELETE FROM scott.emp;
+
+COMMIT ;
+ROLLBACK TO c;
+ROLLBACK ;
+
+SELECT *
+FROM scott.emp;
