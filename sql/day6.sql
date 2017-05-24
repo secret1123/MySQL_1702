@@ -7,7 +7,7 @@ FROM scott.dept;
 SELECT *
 FROM scott.salgrade;
 
-SHOW TABLE STATUS FROM scott;
+SHOW TABLE STATUS FROM db_exam;
 
 SELECT
   DISTINCT
