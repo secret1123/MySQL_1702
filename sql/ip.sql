@@ -12,7 +12,8 @@ SELECT count(*)
 FROM db_1702.ip;
 
 SELECT *
-FROM db_1702.ip;
+FROM db_1702.ip
+WHERE geo RLIKE '洛阳';
 
 SELECT *
 FROM db_1702.ip WHERE inet_aton('127.0.0.1') BETWEEN inet_aton(min) AND inet_aton(max);
