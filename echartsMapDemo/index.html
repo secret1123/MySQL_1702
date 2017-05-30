@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ECharts Map Demo</title>
+    <script src="js/echarts.js"></script>
+    <script src="js/china.js"></script>
+</head>
+<body>
+<div id="map" style="height: 700px;">
+</div>
+<script>
+    var mapChart = echarts.init(document.getElementById('map'));
+
+    var myData = [
+
+    ];
+    var option = {
+        geo: {
+            map: 'china',
+
+            itemStyle: {
+                normal: {
+                    areaColor: '#323c48',
+                    borderColor: '#111'
+                },
+                emphasis: {
+                    areaColor: '#2a333d'
+                }
+            }
+        },
+        backgroundColor: '#404a59',
+
+        series: [{
+            name: '销量',
+            type: 'scatter',
+            coordinateSystem: 'geo',
+
+            data: myData
+        }],
+
+        visualMap: {
+            type: 'continuous',
+            min: 0,
+            max: 200,
+            calculable: true,
+            inRange: {
+                color: ['#50a3ba', '#eac736', '#d94e5d']
+            },
+            textStyle: {
+                color: '#fff'
+            }
+        }
+    };
+    mapChart.setOption(option);
+</script>
+</body>
+</html>
