@@ -1,0 +1,13 @@
+DROP DATABASE IF EXISTS db_dict;
+CREATE DATABASE db_dict;
+
+DROP TABLE IF EXISTS db_dict.word;
+CREATE TABLE db_dict.word(
+  id INT AUTO_INCREMENT PRIMARY KEY
+  COMMENT 'ID PK',
+  english VARCHAR(255) NOT NULL
+  COMMENT '英文',
+  chinese VARCHAR(255) NOT NULL
+  COMMENT '中文',
+  pos  VARCHAR(255) COMMENT '词性partOfSpeech'
+);
