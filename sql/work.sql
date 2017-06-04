@@ -68,3 +68,24 @@ SELECT
 FROM db_work.user u LEFT JOIN db_work.log l
 ON u.id = l.userId
 WHERE u.team = 'one';
+
+SELECT
+  u.name,
+  l.content,
+  l.time
+FROM db_work.user u LEFT JOIN db_work.log l
+ON u.id = l.userId
+WHERE u.team = 'one' AND u.name = 'staff-4';
+
+SELECT
+  u.name,
+  l.content,
+  l.time
+FROM db_work.user u INNER JOIN db_work.log l
+ON u.id = l.userId
+WHERE u.team = 'two';
+
+SELECT *
+FROM db_work.user u INNER JOIN db_work.log l
+ON u.id = l.userId
+WHERE u.team = 'one' AND u.name = 'staff-2';
