@@ -68,21 +68,31 @@ SELECT *
 FROM db_1700.student
 WHERE dob BETWEEN 1998-1-1 AND 1996-1-1;
 # 从student表中查询每个院系有多少人
-SELECT count(*)
+# SELECT count(*)
+# FROM db_1700.student
+# WHERE department = 'com';
+#
+# SELECT count(*)
+# FROM db_1700.student
+# WHERE department = 'el';
+SELECT
+  department,
+  count(*)
 FROM db_1700.student
-WHERE department = 'com';
-
-SELECT count(*)
-FROM db_1700.student
-WHERE department = 'el';
+GROUP BY department;
 # 从score表中查询每个科目的最高分
-SELECT max(grade) cs
+# SELECT max(grade) cs
+# FROM db_1700.score
+#   WHERE course = 'CS';
+#
+# SELECT max(grade) yy
+# FROM db_1700.score
+# WHERE course = 'YY';
+SELECT
+  course,
+  max(grade)
 FROM db_1700.score
-  WHERE course = 'CS';
-
-SELECT max(grade) yy
-FROM db_1700.score
-WHERE course = 'YY';
+GROUP BY course ;
 # 查询李四的考试科目（c_name）和考试成绩（grade）
 SELECT
   s.name,
@@ -106,9 +116,11 @@ FROM db_1700.student s LEFT JOIN db_1700.score c
 ON s.id = c.studentId
 GROUP BY grade;
 # 计算每个考试科目的平均成绩
-SELECT avg(grade)
+SELECT
+  course,
+  avg(grade)
 FROM db_1700.score
-WHERE grade;
+GROUP BY course;
 # 查询计算机成绩低于95的学生信息
 SELECT DISTINCT
   s.*,
