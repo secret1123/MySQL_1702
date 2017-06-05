@@ -22,7 +22,7 @@ CREATE TABLE db_user.message (
   COMMENT 'ID PK',
   content TEXT     NOT NULL
   COMMENT '内容',
-  time    DATETIME NOT NULL DEFAULT now()
+  time    DATETIME NOT NULL
   COMMENT '时间',
   userId  INT      NOT NULL
   COMMENT 'FK 用户ID'
@@ -46,8 +46,8 @@ FROM db_user.user
 WHERE email = 'test@qq.com' AND password = '123';
 
 #3,发布留言
-INSERT INTO db_user.message (content, userId) VALUE ('留言内容1.。。',1);
-INSERT INTO db_user.message (content, userId) VALUE ('留言内容2.。。',1);
+INSERT INTO db_user.message (content,time, userId) VALUE ('留言内容1.。。',now(),1);
+INSERT INTO db_user.message (content,time, userId) VALUE ('留言内容2.。。',now(),1);
 
 SELECT *
 FROM db_user.message;
